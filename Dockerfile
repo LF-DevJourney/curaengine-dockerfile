@@ -14,10 +14,12 @@ RUN ./autogen.sh && ./configure && make && make install && ldconfig
 
 # install libArcus
 WORKDIR "/libArcus"
+RUN git checkout 15.06.03
 RUN mkdir build && cd build && cmake .. && make && make install
 
 # install curaengine
 WORKDIR "/CuraEngine"
+RUN git checkout 15.06.03
 RUN mkdir build && cd build && cmake .. && make
 
 
