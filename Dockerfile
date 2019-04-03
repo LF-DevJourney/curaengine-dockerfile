@@ -14,33 +14,10 @@ RUN ./autogen.sh && ./configure && make && make install && ldconfig
 
 # install libArcus
 WORKDIR "/libArcus"
-RUN git checkout 15.06.03
+RUN git checkout 4.0.0
 RUN mkdir build && cd build && cmake .. && make && make install
 
 # install curaengine
 WORKDIR "/CuraEngine"
-RUN git checkout 15.06.03
+RUN git checkout 4.0.0
 RUN mkdir build && cd build && cmake .. && make
-
-
-# note: ./CuraEngine slice -p -j ./fdmprinter.def.json -j prusa_i3.def.json -l catStandingM_0904_010.stl -o catStandingM_0904_010.gcode
-# Copy the executable cureengine to somewhere.
-#
-#-rwxr-xr-x   1 CuraEngine
-#
-#-rw-r--r--   1 libArcus.so.1.1.0
-#-rwxr-xr-x   1 libprotobuf.so.15.0.0
-#lrw-r--r--   1 libArcus.so.3 -> libArcus.so.1.1.0
-#lrwxr-xr-x   1 libprotobuf.so.15 -> libprotobuf.so.15.0.0
-#
-# config file form cura
-# wget https://raw.githubusercontent.com/Ultimaker/Cura/master/resources/definitions/fdmextruder.def.json
-# wget https://raw.githubusercontent.com/Ultimaker/Cura/master/resources/definitions/fdmprinter.def.json
-# wget https://raw.githubusercontent.com/Ultimaker/Cura/master/resources/definitions/prusa_i3.def.json
-# -rw-r--r--   1 prusa_i3.def.json
-# -rw-r--r--   1 fdmextruder.def.json
-# -rw-r--r--   1 fdmprinter.def.json
-#        
-# test modelfile
-# -rw-r--r--   1 catStandingM_0904_010.gcode
-# -rw-r--r--   1 catStandingM_0904_010.stl
